@@ -318,6 +318,17 @@
       </div>
       <div class="pago-trigger animate-element">
         <p class="pago-trigger-text">¿Deseas realizar un pago?</p>
+        <div class="pago-metodos">
+          <span class="pago-metodo-label">Aceptamos:</span>
+          <div class="pago-metodo-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.481-8.079 6.481h-2.19a2.282 2.282 0 0 0-2.252 1.93l-1.167 7.397h3.43l.924-5.858a1.27 1.27 0 0 1 1.255-1.073h.794c3.925 0 6.993-1.595 7.894-6.208.386-1.987.115-3.55-.961-4.382z"/></svg>
+            <span>PayPal</span>
+          </div>
+          <div class="pago-metodo-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#1D9E75"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            <span>Tarjeta de crédito / débito</span>
+          </div>
+        </div>
         <button class="btn-pago-toggle" onclick="togglePago()">Ver opciones de pago</button>
       </div>
       <div class="payment-box animate-element" id="payment-box" style="display:none;">
@@ -360,7 +371,34 @@
       padding-top: 3rem;
       padding-bottom: 3rem;
     }
-    .pago-trigger-text { color: #444 !important; }
+    .pago-trigger-text { color: #444 !important; font-size: 1.1rem; font-weight: 600; }
+    .pago-metodos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pago-metodo-label {
+      font-size: 0.85rem;
+      color: #888;
+      font-weight: 500;
+      margin-right: 0.25rem;
+    }
+    .pago-metodo-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #333;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
     .pago-trigger {
       background: linear-gradient(135deg, #f0faf6 0%, #e6f7f1 100%) !important;
       border-color: rgba(29,158,117,0.2) !important;
