@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ricardo Aray — Perfil Académico & Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --bg2: #13161b;
+      --bg3: #1a1e25;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --text: #e8e4dc;
+      --text-muted: #7a7872;
+      --text-soft: #b0aa9f;
+      --border: rgba(201,168,76,0.18);
+      --border-soft: rgba(255,255,255,0.06);
+      --accent: #c9a84c;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--bg2);
+      border-right: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      padding: 48px 32px;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+
+    .sidebar-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      margin-bottom: 36px;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border-soft);
+      margin-bottom: 32px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .nav-links li { margin-bottom: 4px; }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-light);
+      background: var(--gold-dim);
+      border-color: var(--border);
+    }
+
+    .nav-links a .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover .dot,
+    .nav-links a.active .dot { opacity: 1; }
+
+    .sidebar-footer {
+      margin-top: auto;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover { color: var(--gold-light); }
+
+    .contact-item svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    .badge-intcalex {
+      margin-top: 24px;
+      padding: 10px 14px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 11px;
+      color: var(--gold-light);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .badge-intcalex:hover {
+      background: rgba(201,168,76,0.25);
+    }
+
+    /* ── MAIN ── */
+    .main {
+      padding: 64px 72px;
+      max-width: 860px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 80px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border-soft);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-name span {
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--gold-light);
+      background: var(--gold-dim);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 72px;
+      animation: fadeUp 0.8s ease both;
+      animation-delay: 0.15s;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.6;
+      min-width: 28px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-soft);
+    }
+
+    /* ── EDUCATION CARDS ── */
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .edu-card:hover {
+      border-color: var(--border);
+      transform: translateX(4px);
+    }
+
+    .edu-card:hover::before { opacity: 1; }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .edu-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .edu-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .edu-status {
+      display: inline-block;
+      padding: 2px 10px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 20px;
+      font-size: 10px;
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--gold);
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .timeline-item:hover::before { opacity: 1; }
+
+    .timeline-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .timeline-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .timeline-subjects {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      background: var(--bg3);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      border-left: 2px solid var(--border);
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-card {
+      background: var(--bg2);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .pub-card:hover {
+      border-color: var(--border);
+      background: var(--bg3);
+    }
+
+    .pub-type {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .pub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .pub-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .pub-link {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--gold-light);
+      text-decoration: none;
+      background: var(--gold-dim);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .pub-link:hover {
+      background: rgba(201,168,76,0.25);
+    }
+
+    /* ── COURSES GRID ── */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .course-card {
+      background: var(--bg2);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 18px 20px;
+      transition: border-color 0.2s;
+    }
+
+    .course-card:hover { border-color: var(--border); }
+
+    .course-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .course-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-hours {
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievement-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .achievement-item:last-child { border-bottom: none; }
+
+    .achievement-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .achievement-text {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* ── LANGUAGES ── */
+    .lang-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--bg2);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .lang-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .lang-level {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--gold-light);
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+
+    .lang-org {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        padding: 32px 24px;
+      }
+      .main { padding: 40px 24px; }
+      .pub-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">intcalex.com</div>
+
+    <div class="sidebar-name">Ricardo<br>Aray Arauz</div>
+    <div class="sidebar-title">Ing. Mg. · Doctorando UHuelva<br>Docente ULEAM · Consultor EdTech</div>
+
+    <div class="sidebar-divider"></div>
+
+    <p class="nav-label">Navegación</p>
+    <ul class="nav-links">
+      <li><a href="#formacion" class="active"><span class="dot"></span>Formación</a></li>
+      <li><a href="#docencia"><span class="dot"></span>Docencia</a></li>
+      <li><a href="#publicaciones"><span class="dot"></span>Publicaciones</a></li>
+      <li><a href="#cursos"><span class="dot"></span>Certificaciones</a></li>
+      <li><a href="#idiomas"><span class="dot"></span>Idiomas</a></li>
+      <li><a href="#logros"><span class="dot"></span>Logros</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <a href="mailto:ricardoar.7@gmail.com" class="contact-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        ricardoar.7@gmail.com
+      </a>
+      <a href="tel:+593993024825" class="contact-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        +593 993 024 825
+      </a>
+      <a href="https://intcalex.com" target="_blank" class="badge-intcalex">
+        ↗ intcalex.com
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-eyebrow">Perfil académico &amp; profesional</div>
+      <h1 class="hero-name">Ing. Ricardo<br><span>Aray</span>, Mg.</h1>
+      <p class="hero-desc">
+        Docente universitario a tiempo completo en la ULEAM, doctorando en Comunicación 
+        (Educomunicación y Alfabetización Mediática) en la Universidad de Huelva, España. 
+        Investigador en el impacto de las tecnologías en la Educación Superior ecuatoriana 
+        y fundador de INTCALEX, consultora en transformación digital y automatización.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">EdTech</span>
+        <span class="tag">Bases de Datos</span>
+        <span class="tag">IA Educativa</span>
+        <span class="tag">Investigación Scopus</span>
+        <span class="tag">Transformación Digital</span>
+        <span class="tag">OBM & Automatización</span>
+      </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section class="section" id="formacion">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Formación Académica</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-degree">
+          Doctorado en Comunicación — Línea Educomunicación y Alfabetización Mediática
+          <span class="edu-status">En desarrollo</span>
+        </div>
+        <div class="edu-meta">
+          <span>Universidad de Huelva, España</span>
+          <span>· Tesis: El impacto de las Tecnologías en la Educación Superior de Ecuador</span>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-degree">Máster Universitario en Comunicación y Educación Audiovisual</div>
+        <div class="edu-meta">
+          <span>Universidad Internacional de Andalucía, España</span>
+          <span>· 2020</span>
+          <span>· Reg. SENESCYT 7242162532</span>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-degree">Ingeniería en Sistemas</div>
+        <div class="edu-meta">
+          <span>Universidad Laica Eloy Alfaro de Manabí, Ecuador</span>
+          <span>· 2016</span>
+          <span>· Reg. SENESCYT 1016-2016-1719521</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCENCIA -->
+    <section class="section" id="docencia">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Experiencia Docente</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-period">Ago 2024 — Presente</div>
+          <div class="timeline-role">Docente — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Tecnologías de Información Emergentes · Base de Datos (SQL Server en Mac con Docker, VS Code, Copilot)</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Abr 2024 — Jul 2024</div>
+          <div class="timeline-role">Docente — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Base de Datos · Administración de BDD Distribuidas · Integración de Sistemas y Plataformas</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Sep 2023 — Dic 2023</div>
+          <div class="timeline-role">Docente Técnico — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Modelado OO · Algoritmos · Base de Datos · Integración de Sistemas · Ingeniería de Requisitos</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Ene 2023 — Ago 2023</div>
+          <div class="timeline-role">Docente Técnico — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Fundamentos de TI · Cátedra Alfaro · Liderazgo y Emprendimiento</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Ene 2022 — Dic 2022</div>
+          <div class="timeline-role">Docente Técnico — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Fundamentos de TI · Matemáticas · Herramientas Tecnológicas para el Aprendizaje</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">May 2020 — Mar 2021</div>
+          <div class="timeline-role">Docente Técnico — Tiempo Completo</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Fundamentos TI · Ciencias Experimentales · Docente Tutor</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Oct 2018 — May 2019</div>
+          <div class="timeline-role">Docente Técnico — Tiempo Parcial</div>
+          <div class="timeline-org">Universidad Laica Eloy Alfaro de Manabí</div>
+          <div class="timeline-subjects">Matemáticas · Física</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PUBLICACIONES -->
+    <section class="section" id="publicaciones">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Publicaciones Científicas</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="pub-card">
+        <div>
+          <span class="pub-type">Artículo · Scopus / IEEE</span>
+          <div class="pub-title">Design and Implementation of AI-Based Authoring Tools for Learning Systems Development</div>
+          <div class="pub-meta">Congreso indexado en Scopus · Autor principal · IEEE Xplore</div>
+        </div>
+        <a href="https://ieeexplore.ieee.org/document/11198962" target="_blank" class="pub-link">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          IEEE Xplore
+        </a>
+      </div>
+
+      <div class="pub-card">
+        <div>
+          <span class="pub-type">Artículo · Scopus / IEEE</span>
+          <div class="pub-title">Evaluating Students' Writing and Performance Using Cutting-Edge AI Technologies in Medical Education</div>
+          <div class="pub-meta">Congreso indexado en Scopus · IEEE Xplore</div>
+        </div>
+        <a href="https://ieeexplore.ieee.org/document/11198962" target="_blank" class="pub-link">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          IEEE Xplore
+        </a>
+      </div>
+
+      <div class="pub-card">
+        <div>
+          <span class="pub-type">Libro · Autor principal</span>
+          <div class="pub-title">Lectura y Escritura Académica y Creativa II: Instrumentos que aportan al desarrollo humano</div>
+          <div class="pub-meta">Editorial Mawil · Autor principal</div>
+        </div>
+        <a href="https://mawil.us/lectura-y-escritura-academica-y-creativa-ii/" target="_blank" class="pub-link">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Ver libro
+        </a>
+      </div>
+
+      <div class="pub-card">
+        <div>
+          <span class="pub-type">Libro · Compilador</span>
+          <div class="pub-title">Herramientas Tecnológicas para la Educación Superior</div>
+          <div class="pub-meta">Editorial ULEAM · En fase de ajustes finales</div>
+        </div>
+        <span class="pub-link" style="opacity:0.5; cursor:default;">Próximamente</span>
+      </div>
+
+    </section>
+
+    <!-- PONENCIAS -->
+    <section class="section" id="ponencias">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Ponencias</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-period">2024 · San José, Costa Rica</div>
+          <div class="timeline-role">Tecnologías en la Educación Superior de Ecuador: Un análisis de su implementación y efectividad</div>
+          <div class="timeline-org">VII Congreso Internacional ALFAMED — Red Interuniversitaria Euroamericana</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">2020 · Manta, Ecuador</div>
+          <div class="timeline-role">Procesos y estrategias para favorecer la inclusión educativa en la nivelación universitaria</div>
+          <div class="timeline-org">V Jornadas de Investigación, Innovación y Desarrollo — ULEAM</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICACIONES -->
+    <section class="section" id="cursos">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Certificaciones &amp; Formación Complementaria</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-title">Fundamentos de Inteligencia Artificial</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">67h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Fundamentos de Virtualización</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">63h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Fundamentos Machine Learning</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">50h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Fundamentos de Cómputo en la Nube</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">45h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Diseñador de Peticiones para Modelos de IA Generativa</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">39h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Introducción a Realidad Virtual, Aumentada y Mixta</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">44h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Transformación Digital y Evolución Tecnológica</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">38h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Fundamentos de Blockchain</div>
+          <div class="course-meta"><span>Capacítate · Fundación Carlos Slim</span><span class="course-hours">32h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Didáctica y Tecnologías Emergentes Aplicadas a la Educación</div>
+          <div class="course-meta"><span>ULEAM · APUU</span><span class="course-hours">40h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Currículo, Evaluación e Inclusión: Práctica Integral</div>
+          <div class="course-meta"><span>ULEAM · APUU</span><span class="course-hours">40h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Seminario de Epistemología y Metodologías de Investigación</div>
+          <div class="course-meta"><span>Escuela Doctorado · UHuelva</span><span class="course-hours">22h</span></div>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Estrategias de Atención Educativa Inclusiva</div>
+          <div class="course-meta"><span>Consejo de Educación Superior</span><span class="course-hours">40h</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDIOMAS -->
+    <section class="section" id="idiomas">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Idiomas</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">Español</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Lengua materna</div>
+        </div>
+        <div class="lang-level">
+          <span class="lang-badge">Nativo</span>
+        </div>
+      </div>
+
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">Inglés</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Universidad Laica Eloy Alfaro de Manabí</div>
+        </div>
+        <div class="lang-level">
+          <span class="lang-badge">B1</span>
+        </div>
+      </div>
+
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">Inglés</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Ministerio de Trabajo – Point Institute</div>
+        </div>
+        <div class="lang-level">
+          <span class="lang-badge">B2</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGROS -->
+    <section class="section" id="logros">
+      <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Logros Académicos &amp; Personales</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-text">
+          <strong style="color:var(--text)">Tercer lugar — Concurso "Educlips", España (2019)</strong><br>
+          Trabajo grupal transmitido por RTVE en el programa "La aventura del saber", replicado por medios impresos y digitales de España y Ecuador.
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon">🎓</div>
+        <div class="achievement-text">
+          <strong style="color:var(--text)">Becado AUIP</strong><br>
+          Asociación Universitaria Iberoamericana de Postgrado — becas de matrícula, alojamiento y movilidad.
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon">🎓</div>
+        <div class="achievement-text">
+          <strong style="color:var(--text)">Beca de Manutención — Universidad Internacional de Andalucía</strong><br>
+          Financiamiento completo para estudios de máster en España.
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon">🌎</div>
+        <div class="achievement-text">
+          <strong style="color:var(--text)">Programa de Liderazgo — Compassion International</strong><br>
+          Seleccionado para el programa de liderazgo de la ONG internacional.
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
