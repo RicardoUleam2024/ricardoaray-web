@@ -159,12 +159,6 @@
           </div>
         </div>
       </div>
-      <div class="servicios-cta animate-element">
-        <p class="servicios-cta-text">¿Deseas realizar un pago?</p>
-        <button class="btn-pago-toggle" onclick="document.getElementById('pagos').scrollIntoView({behavior:'smooth'});setTimeout(()=>togglePago(),600)">
-          Ver opciones de pago
-        </button>
-      </div>
     </div>
   </section>
 
@@ -317,10 +311,10 @@
   </section>
 
   <!-- Pagos -->
-  <section id="pagos">
+  <section id="pagos" class="pagos-bg">
     <div class="container">
       <div class="section-title-wrapper animate-element">
-        <h2 class="section-title">Pagos</h2>
+        <h2 class="section-title" style="color:#fff;">Pagos</h2>
       </div>
       <div class="pago-trigger animate-element">
         <p class="pago-trigger-text">¿Deseas realizar un pago?</p>
@@ -361,7 +355,33 @@
   </section>
 
   <style>
-    #pagos { background: #f8fafb; }
+    .pagos-bg {
+      position: relative;
+      background: linear-gradient(135deg, #0a2e22 0%, #0f3d2e 40%, #1a5c45 100%);
+      overflow: hidden;
+    }
+    .pagos-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(29,158,117,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(29,158,117,0.1) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(15,110,86,0.12) 0%, transparent 40%);
+      animation: pagos-pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes pagos-pulse {
+      0%   { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1;   transform: scale(1.05); }
+    }
+    .pagos-bg .section-title { color: #fff; }
+    .pagos-bg .container { position: relative; z-index: 1; }
+    .pago-trigger-text { color: rgba(255,255,255,0.85) !important; }
+    .pago-trigger {
+      background: rgba(255,255,255,0.07) !important;
+      border-color: rgba(255,255,255,0.15) !important;
+      backdrop-filter: blur(8px);
+    }
     .payment-box {
       max-width: 520px;
       margin: 0 auto;
