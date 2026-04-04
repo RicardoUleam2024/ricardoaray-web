@@ -160,11 +160,10 @@
         </div>
       </div>
       <div class="servicios-cta animate-element">
-        <p class="servicios-cta-text">¿Listo para comenzar? Contrata un servicio directamente con tarjeta de crédito o débito.</p>
-        <a href="https://ppls.me/iqSMsKUUb2j6NUoUQgZw" target="_blank" rel="noopener noreferrer" class="btn-payphone">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-          Pagar con tarjeta
-        </a>
+        <p class="servicios-cta-text">¿Deseas realizar un pago?</p>
+        <button class="btn-pago-toggle" onclick="document.getElementById('pagos').scrollIntoView({behavior:'smooth'});setTimeout(()=>togglePago(),600)">
+          Ver opciones de pago
+        </button>
       </div>
     </div>
   </section>
@@ -182,6 +181,41 @@
       color: #444;
       margin-bottom: 1.25rem;
       font-size: 1rem;
+    }
+    .btn-pago-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1D9E75;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(29,158,117,0.35);
+    }
+    .btn-pago-toggle:hover {
+      background: #0F6E56;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29,158,117,0.45);
+    }
+    .pago-trigger {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f0faf6 0%, #e6f7f1 100%);
+      border-radius: 16px;
+      border: 1.5px solid rgba(29,158,117,0.2);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .pago-trigger-text {
+      color: #444;
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 500;
     }
     .btn-payphone {
       display: inline-flex;
@@ -286,10 +320,14 @@
   <section id="pagos">
     <div class="container">
       <div class="section-title-wrapper animate-element">
-        <h2 class="section-title">Realizar un Pago</h2>
-        <p style="text-align:center; color: var(--color-gray-600); margin-top: -1rem;">Ingresa el monto, el concepto y elige tu método de pago.</p>
+        <h2 class="section-title">Pagos</h2>
       </div>
-      <div class="payment-box animate-element">
+      <div class="pago-trigger animate-element">
+        <p class="pago-trigger-text">¿Deseas realizar un pago?</p>
+        <button class="btn-pago-toggle" onclick="togglePago()">Ver opciones de pago</button>
+      </div>
+      <div class="payment-box animate-element" id="payment-box" style="display:none;">
+        <p style="text-align:center;color:#888;font-size:0.85rem;margin-bottom:1.5rem;">Ingresa el monto, el concepto y elige tu método de pago.</p>
         <div class="form-group">
           <label for="pago-concepto">Concepto</label>
           <input type="text" id="pago-concepto" placeholder="Ej: Consultoría web, Curso Python...">
@@ -317,6 +355,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
           Pagar con tarjeta (Payphone)
         </a>
+        <button onclick="togglePago()" style="width:100%;margin-top:1rem;background:none;border:none;color:#aaa;font-size:0.85rem;cursor:pointer;">Cerrar ✕</button>
       </div>
     </div>
   </section>
@@ -387,6 +426,15 @@
   </style>
 
   <script>
+    function togglePago() {
+      const box = document.getElementById('payment-box');
+      const trigger = document.querySelector('.pago-trigger');
+      const isHidden = box.style.display === 'none';
+      box.style.display = isHidden ? 'block' : 'none';
+      trigger.style.display = isHidden ? 'none' : 'block';
+      if (isHidden) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     function pagarPaypal() {
       const monto = document.getElementById('pago-monto').value;
       const moneda = document.getElementById('pago-moneda').value;
