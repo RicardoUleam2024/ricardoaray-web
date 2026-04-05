@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ricardo Aray Arauz — Tecnología, Educación e Investigación</title>
   <meta name="description" content="Sitio personal de Ricardo Aray Arauz. Docente, investigador, consultor tecnológico y especialista en tecnología educativa.">
-  <meta name="theme-color" content="#1D9E75">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231D9E75' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>R</text></svg>">
+  <meta name="theme-color" content="#1B3A6B">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%235B47E0' width='100' height='100' rx='20'/><text x='50' y='65' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>R</text></svg>">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E76LTDWBEV"></script>
   <script>
@@ -18,11 +18,6 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Fix: hero siempre visible, el resto animado al hacer scroll */
-    .hero .hero-content {
-      opacity: 1 !important;
-      transform: none !important;
-    }
     .animate-element {
       opacity: 0;
       transform: translateY(24px);
@@ -46,7 +41,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background-color: var(--color-primary, #1D9E75);
+      background-color: var(--color-gray-900, #111111);
       border-radius: 2px;
       transition: all 0.3s ease;
     }
@@ -73,7 +68,7 @@
     /* Form success */
     .form-success { text-align: center; padding: 2rem 1rem; }
     .form-success-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .form-success h3 { color: var(--color-primary, #1D9E75); font-size: 1.5rem; margin-bottom: .5rem; }
+    .form-success h3 { color: var(--color-primary, #1B3A6B); font-size: 1.5rem; margin-bottom: .5rem; }
     .form-success p { color: #555; }
   </style>
 </head>
@@ -99,15 +94,37 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero hero-dark" id="inicio">
-    <canvas id="particles-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <section class="hero" id="inicio">
+    <div class="hero-bg-name" aria-hidden="true">Ricardo<br>Aray</div>
     <div class="container">
-      <div class="hero-content">
-        <h1>Hola, soy <span class="hero-highlight">Ricardo Aray</span> — Docente, Investigador y <span class="hero-highlight">Consultor Tecnológico</span></h1>
-        <p class="hero-subtitle">Especialista en tecnología educativa, desarrollo web e investigación académica. Ayudo a personas e instituciones a crecer en la era digital.</p>
-        <div class="hero-buttons">
-          <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
-          <a href="#contacto" class="btn btn-secondary">Contáctame</a>
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Docente · Investigador · Consultor</span>
+          <h1>Hola, soy <span class="hero-highlight">Ricardo<br>Aray</span></h1>
+          <p class="hero-subtitle">Especialista en tecnología educativa, desarrollo web e investigación académica. Ayudo a personas e instituciones a crecer en la era digital.</p>
+          <div class="hero-buttons">
+            <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+            <a href="#contacto" class="btn btn-secondary">Contáctame</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>10+</strong>
+              <span>años de experiencia</span>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat">
+              <strong>5</strong>
+              <span>publicaciones</span>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat">
+              <strong>3</strong>
+              <span>áreas de especialidad</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <img src="images/profile.jpg" alt="Ricardo Aray Arauz" class="hero-photo">
         </div>
       </div>
     </div>
@@ -117,6 +134,7 @@
   <section id="servicios">
     <div class="container">
       <div class="section-title-wrapper animate-element">
+        <span class="section-eyebrow">Lo que ofrezco</span>
         <h2 class="section-title">Servicios Profesionales</h2>
       </div>
       <div class="servicios-grid">
@@ -150,12 +168,12 @@
           <h3>Gestión de Operaciones y Automatización</h3>
           <p style="margin-bottom:0.5rem">Tu negocio funcionando con más eficiencia, sin depender de ti para todo.</p>
           <details style="font-size:0.9rem">
-            <summary style="cursor:pointer;color:#0F6E56;font-weight:600;list-style:none;margin-bottom:0.5rem">Ver más ▾</summary>
+            <summary style="cursor:pointer;color:#0F2546;font-weight:600;list-style:none;margin-bottom:0.5rem">Ver más ▾</summary>
             <p style="margin-top:0.5rem;opacity:0.85">Actúo como tu Online Business Manager (OBM) remoto: organizo proyectos, analizo métricas, propongo mejoras y coordino procesos para que tu negocio funcione con más eficiencia. Además automatizo tareas repetitivas — reportes en PDF, dashboards interactivos e integración de herramientas — para que tu equipo se enfoque en lo que importa.</p>
           </details>
           <div style="margin-top:1.2rem;display:flex;gap:8px;flex-wrap:wrap">
-            <span style="background:#0F6E56;color:#E1F5EE;font-size:0.78rem;padding:4px 14px;border-radius:20px;font-weight:600">Desde $150</span>
-            <span style="background:#185FA5;color:#E6F1FB;font-size:0.78rem;padding:4px 14px;border-radius:20px;font-weight:600">+ $80/mes</span>
+            <span style="background:#E8F0FD;color:#0F2546;font-size:0.78rem;padding:4px 14px;border-radius:20px;font-weight:600">Desde $150</span>
+            <span style="background:#FEF3C7;color:#D97706;font-size:0.78rem;padding:4px 14px;border-radius:20px;font-weight:600">+ $80/mes</span>
           </div>
         </div>
       </div>
@@ -167,9 +185,9 @@
       text-align: center;
       margin-top: 2.5rem;
       padding: 2rem;
-      background: linear-gradient(135deg, #f0faf6 0%, #e6f7f1 100%);
+      background: var(--color-primary-light, #E8F0FD);
       border-radius: 16px;
-      border: 1.5px solid rgba(29,158,117,0.2);
+      border: 1.5px solid rgba(27,58,107,0.15);
     }
     .servicios-cta-text {
       color: #444;
@@ -180,7 +198,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: #1D9E75;
+      background: #1B3A6B;
       color: #fff;
       border: none;
       border-radius: 10px;
@@ -189,19 +207,19 @@
       font-weight: 700;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(29,158,117,0.35);
+      box-shadow: 0 4px 14px rgba(27,58,107,0.25);
     }
     .btn-pago-toggle:hover {
-      background: #0F6E56;
+      background: #0F2546;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(29,158,117,0.45);
+      box-shadow: 0 6px 20px rgba(27,58,107,0.35);
     }
     .pago-trigger {
       text-align: center;
       padding: 2rem;
-      background: linear-gradient(135deg, #f0faf6 0%, #e6f7f1 100%);
+      background: var(--color-bg-alt, #F3F3F0);
       border-radius: 16px;
-      border: 1.5px solid rgba(29,158,117,0.2);
+      border: 1.5px solid var(--color-gray-200, #E5E7EB);
       max-width: 520px;
       margin: 0 auto;
     }
@@ -215,7 +233,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: #1D9E75;
+      background: #1B3A6B;
       color: #fff;
       border: none;
       border-radius: 10px;
@@ -225,12 +243,12 @@
       text-decoration: none;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(29,158,117,0.35);
+      box-shadow: 0 4px 14px rgba(27,58,107,0.25);
     }
     .btn-payphone:hover {
-      background: #0F6E56;
+      background: #0F2546;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(29,158,117,0.45);
+      box-shadow: 0 6px 20px rgba(27,58,107,0.35);
     }
   </style>
 
@@ -238,6 +256,7 @@
   <section id="sobre">
     <div class="container">
       <div class="section-title-wrapper animate-element">
+        <span class="section-eyebrow">Quién soy</span>
         <h2 class="section-title">Sobre Mí</h2>
       </div>
       <div class="about-content">
@@ -266,6 +285,7 @@
   <section id="contacto">
     <div class="container">
       <div class="section-title-wrapper animate-element">
+        <span class="section-eyebrow">Hablemos</span>
         <h2 class="section-title">Ponte en Contacto</h2>
       </div>
       <div class="contact-content">
@@ -400,8 +420,8 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .pago-trigger {
-      background: linear-gradient(135deg, #f0faf6 0%, #e6f7f1 100%) !important;
-      border-color: rgba(29,158,117,0.2) !important;
+      background: var(--color-bg-alt, #F3F3F0) !important;
+      border-color: var(--color-gray-200, #E5E7EB) !important;
     }
     .payment-box {
       max-width: 520px;
@@ -423,12 +443,12 @@
       transition: border-color 0.2s;
       outline: none;
     }
-    #pagos input:focus, #pagos select:focus { border-color: #1D9E75; }
+    #pagos input:focus, #pagos select:focus { border-color: #1B3A6B; box-shadow: 0 0 0 3px rgba(27,58,107,0.1); }
     .payment-note {
       font-size: 0.85rem;
       color: #888;
-      background: #f0f9f5;
-      border-left: 3px solid #1D9E75;
+      background: #E8F0FD;
+      border-left: 3px solid #1B3A6B;
       padding: 0.6rem 0.9rem;
       border-radius: 4px;
       margin-bottom: 1.5rem;
@@ -525,6 +545,64 @@
     });
   </script>
   <script src="js/animations.js"></script>
-  <script src="js/particles.js"></script>
+  <script>
+    // ── Parallax dismantle al scroll ──────────────────────────────────
+    (function() {
+      const heroContent = document.querySelector('.hero-content');
+      const heroPhotoWrap = document.querySelector('.hero-photo-wrap');
+      const hero = document.getElementById('inicio');
+      if (!heroContent || !heroPhotoWrap || !hero) return;
+
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            const scrollY = window.scrollY;
+            const heroH = hero.offsetHeight;
+            if (scrollY <= heroH) {
+              const p = scrollY / heroH;
+              // Texto: sube y desaparece antes
+              heroContent.style.transform = 'translateY(' + (-scrollY * 0.28) + 'px)';
+              heroContent.style.opacity = Math.max(1 - p * 2.2, 0);
+              // Foto: sube más despacio, efecto de separación (parallax)
+              heroPhotoWrap.style.transform = 'translateY(' + (-scrollY * 0.1) + 'px)';
+            } else {
+              heroContent.style.opacity = '';
+              heroContent.style.transform = '';
+              heroPhotoWrap.style.transform = '';
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ── Tilt 3D de la foto al mover el mouse ─────────────────────────
+    (function() {
+      const photoWrap = document.querySelector('.hero-photo-wrap');
+      const heroSection = document.getElementById('inicio');
+      if (!photoWrap || !heroSection) return;
+
+      let resetTimeout;
+      heroSection.addEventListener('mousemove', function(e) {
+        clearTimeout(resetTimeout);
+        const rect = heroSection.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        photoWrap.style.transition = 'transform 0.08s ease';
+        photoWrap.style.transform = 'perspective(900px) rotateY(' + (dx * 9) + 'deg) rotateX(' + (-dy * 6) + 'deg) translateY(0)';
+      });
+
+      heroSection.addEventListener('mouseleave', function() {
+        resetTimeout = setTimeout(function() {
+          photoWrap.style.transition = 'transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+          photoWrap.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
+        }, 80);
+      });
+    })();
+  </script>
 </body>
 </html>
